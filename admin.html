@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>CyberHack | Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- ========== LOGIN SCREEN ========== -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <img src="logo.png" alt="CyberHack" class="login-logo-img">
+            <h2>Admin Panel</h2>
+            <p>CyberHack idarəetmə panelinə daxil olun</p>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="loginPassword" placeholder="Şifrə" autocomplete="current-password">
+            </div>
+            <button class="btn-login" id="loginBtn">Daxil ol</button>
+            <div class="login-error" id="loginError"></div>
+            <p class="login-hint">Şifrəni unutmusunuz? Sayt administratoru ilə əlaqə saxlayın.</p>
+        </div>
+    </div>
+
+    <!-- ========== ADMIN WRAPPER ========== -->
+    <div class="admin-wrapper" id="adminWrapper" style="display:none;">
+
+        <!-- ========== SIDEBAR ========== -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="CyberHack" class="sidebar-logo">
+                <span>ADMIN</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-section="hero">
+                    <i class="fas fa-home"></i> Hero Bölmə
+                </a>
+                <a href="#" class="nav-item" data-section="about">
+                    <i class="fas fa-info-circle"></i> Haqqımızda
+                </a>
+                <a href="#" class="nav-item" data-section="team">
+                    <i class="fas fa-users"></i> Komanda
+                </a>
+                <a href="#" class="nav-item" data-section="projects">
+                    <i class="fas fa-code"></i> Layihələr
+                </a>
+                <a href="#" class="nav-item" data-section="achievements">
+                    <i class="fas fa-trophy"></i> Uğurlar
+                </a>
+                <a href="#" class="nav-item" data-section="blog">
+                    <i class="fas fa-newspaper"></i> Bloq
+                </a>
+                <a href="#" class="nav-item" data-section="faq">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </a>
+                <a href="#" class="nav-item" data-section="contact">
+                    <i class="fas fa-envelope"></i> Əlaqə
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i> Parametrlər
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-view-site" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i> Saytı Gör
+                </a>
+                <button class="btn-logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Çıxış
+                </button>
+            </div>
+        </aside>
+
+        <!-- ========== MAIN ========== -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+                <h1 id="pageTitle">Dashboard</h1>
+                <button class="btn-save-all" id="saveAllBtn">
+                    <i class="fas fa-save"></i> Hamısını Saxla
+                </button>
+            </header>
+
+            <div class="admin-content">
+
+                <!-- ===== DASHBOARD ===== -->
+                <section class="panel-section active" id="panel-dashboard">
+                    <div class="dashboard-cards">
+                        <div class="dash-card">
+                            <div class="dash-icon"><i class="fas fa-users"></i></div>
+                            <div>
+                                <span class="dash-number" id="dashTeamCount">0</span>
+                                <span class="dash-label">Komanda Üzvü</span>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon"><i class="fas fa-code"></i></div>
+                            <div>
+                                <span class="dash-number" id="dashProjectCount">0</span>
+                                <span class="dash-label">Layihə</span>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon"><i class="fas fa-trophy"></i></div>
+                            <div>
+                                <span class="dash-number" id="dashAchievementCount">0</span>
+                                <span class="dash-label">Uğur</span>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon"><i class="fas fa-newspaper"></i></div>
+                            <div>
+                                <span class="dash-number" id="dashBlogCount">0</span>
+                                <span class="dash-label">Bloq Yazısı</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dash-quick">
+                        <h3><i class="fas fa-bolt"></i> Sürətli Keçidlər</h3>
+                        <div class="quick-actions">
+                            <button onclick="showSection('team')"><i class="fas fa-user-plus"></i> Üzv Əlavə Et</button>
+                            <button onclick="showSection('projects')"><i class="fas fa-plus-circle"></i> Layihə Əlavə Et</button>
+                            <button onclick="showSection('achievements')"><i class="fas fa-medal"></i> Uğur Əlavə Et</button>
+                            <button onclick="showSection('blog')"><i class="fas fa-pen"></i> Yazı Əlavə Et</button>
+                        </div>
+                    </div>
+                    <div class="dash-info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>Məlumat:</strong> Dəyişiklikləri etdikdən sonra yuxarıdakı
+                            <strong>"Hamısını Saxla"</strong> düyməsinə basın. Dəyişikliklər avtomatik olaraq sayta tətbiq ediləcək.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== HERO ===== -->
+                <section class="panel-section" id="panel-hero">
+                    <div class="panel-card">
+                        <h3><i class="fas fa-home"></i> Hero Bölmə</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Badge Mətni (AZ)</label>
+                                <input type="text" id="heroBadgeAz" maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Badge Mətni (EN)</label>
+                                <input type="text" id="heroBadgeEn" maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Başlıq Sətir 1 (AZ)</label>
+                                <input type="text" id="heroLine1Az" maxlength="80">
+                            </div>
+                            <div class="form-group">
+                                <label>Başlıq Sətir 1 (EN)</label>
+                                <input type="text" id="heroLine1En" maxlength="80">
+                            </div>
+                            <div class="form-group">
+                                <label>Başlıq Sətir 2 (AZ)</label>
+                                <input type="text" id="heroLine2Az" maxlength="80">
+                            </div>
+                            <div class="form-group">
+                                <label>Başlıq Sətir 2 (EN)</label>
+                                <input type="text" id="heroLine2En" maxlength="80">
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Alt Başlıq (AZ)</label>
+                                <textarea id="heroSubAz" rows="3" maxlength="400"></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Alt Başlıq (EN)</label>
+                                <textarea id="heroSubEn" rows="3" maxlength="400"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Hakatonlar Sayı</label>
+                                <input type="number" id="statHackathons" min="0" max="9999">
+                            </div>
+                            <div class="form-group">
+                                <label>Mükafatlar Sayı</label>
+                                <input type="number" id="statAwards" min="0" max="9999">
+                            </div>
+                            <div class="form-group">
+                                <label>Layihələr Sayı</label>
+                                <input type="number" id="statProjects" min="0" max="9999">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== ABOUT ===== -->
+                <section class="panel-section" id="panel-about">
+                    <div class="panel-card">
+                        <h3><i class="fas fa-info-circle"></i> Haqqımızda</h3>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label>Təsvir (AZ)</label>
+                                <textarea id="aboutDescAz" rows="4" maxlength="600"></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Təsvir (EN)</label>
+                                <textarea id="aboutDescEn" rows="4" maxlength="600"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>GitHub Commitlər</label>
+                                <input type="number" id="githubCommits" min="0" max="999999">
+                            </div>
+                            <div class="form-group">
+                                <label>GitHub Repolar</label>
+                                <input type="number" id="githubRepos" min="0" max="99999">
+                            </div>
+                            <div class="form-group">
+                                <label>GitHub PR-lar</label>
+                                <input type="number" id="githubPRs" min="0" max="99999">
+                            </div>
+                            <div class="form-group">
+                                <label>GitHub Ulduzlar</label>
+                                <input type="number" id="githubStars" min="0" max="99999">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== TEAM ===== -->
+                <section class="panel-section" id="panel-team">
+                    <div class="panel-card">
+                        <div class="panel-header-row">
+                            <h3><i class="fas fa-users"></i> Komanda</h3>
+                            <button class="btn-add" id="addTeamBtn"><i class="fas fa-plus"></i> Üzv Əlavə Et</button>
+                        </div>
+                        <div class="items-list" id="teamList"></div>
+                    </div>
+                </section>
+
+                <!-- ===== PROJECTS ===== -->
+                <section class="panel-section" id="panel-projects">
+                    <div class="panel-card">
+                        <div class="panel-header-row">
+                            <h3><i class="fas fa-code"></i> Layihələr</h3>
+                            <button class="btn-add" id="addProjectBtn"><i class="fas fa-plus"></i> Layihə Əlavə Et</button>
+                        </div>
+                        <div class="items-list" id="projectList"></div>
+                    </div>
+                </section>
+
+                <!-- ===== ACHIEVEMENTS ===== -->
+                <section class="panel-section" id="panel-achievements">
+                    <div class="panel-card">
+                        <div class="panel-header-row">
+                            <h3><i class="fas fa-trophy"></i> Uğurlar</h3>
+                            <button class="btn-add" id="addAchievementBtn"><i class="fas fa-plus"></i> Uğur Əlavə Et</button>
+                        </div>
+                        <div class="items-list" id="achievementList"></div>
+                    </div>
+                </section>
+
+                <!-- ===== BLOG ===== -->
+                <section class="panel-section" id="panel-blog">
+                    <div class="panel-card">
+                        <div class="panel-header-row">
+                            <h3><i class="fas fa-newspaper"></i> Bloq</h3>
+                            <button class="btn-add" id="addBlogBtn"><i class="fas fa-plus"></i> Yazı Əlavə Et</button>
+                        </div>
+                        <div class="items-list" id="blogList"></div>
+                    </div>
+                </section>
+
+                <!-- ===== FAQ ===== -->
+                <section class="panel-section" id="panel-faq">
+                    <div class="panel-card">
+                        <div class="panel-header-row">
+                            <h3><i class="fas fa-question-circle"></i> FAQ</h3>
+                            <button class="btn-add" id="addFaqBtn"><i class="fas fa-plus"></i> Sual Əlavə Et</button>
+                        </div>
+                        <div class="items-list" id="faqList"></div>
+                    </div>
+                </section>
+
+                <!-- ===== CONTACT ===== -->
+                <section class="panel-section" id="panel-contact">
+                    <div class="panel-card">
+                        <h3><i class="fas fa-envelope"></i> Əlaqə Məlumatları</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" id="contactEmail" maxlength="254">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon</label>
+                                <input type="text" id="contactPhone" maxlength="30">
+                            </div>
+                            <div class="form-group">
+                                <label>GitHub URL</label>
+                                <input type="url" id="contactGithub" maxlength="200">
+                            </div>
+                            <div class="form-group">
+                                <label>LinkedIn URL</label>
+                                <input type="url" id="contactLinkedin" maxlength="200">
+                            </div>
+                            <div class="form-group">
+                                <label>Twitter URL</label>
+                                <input type="url" id="contactTwitter" maxlength="200">
+                            </div>
+                            <div class="form-group">
+                                <label>Instagram URL</label>
+                                <input type="url" id="contactInstagram" maxlength="200">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ===== SETTINGS ===== -->
+                <section class="panel-section" id="panel-settings">
+                    <div class="panel-card" style="margin-bottom:20px;">
+                        <h3><i class="fas fa-clock"></i> Geri Sayım</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Hadisə Adı (AZ)</label>
+                                <input type="text" id="countdownNameAz" maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Hadisə Adı (EN)</label>
+                                <input type="text" id="countdownNameEn" maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label>Tarix və Saat</label>
+                                <input type="datetime-local" id="countdownDate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-card" style="margin-bottom:20px;">
+                        <h3><i class="fas fa-key"></i> Şifrə Dəyiş</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Yeni Şifrə</label>
+                                <input type="password" id="newPassword" maxlength="100" autocomplete="new-password">
+                            </div>
+                            <div class="form-group">
+                                <label>Şifrəni Təsdiqlə</label>
+                                <input type="password" id="confirmPassword" maxlength="100" autocomplete="new-password">
+                            </div>
+                        </div>
+                        <button class="btn-primary" id="changePasswordBtn" style="margin-top:12px;">
+                            <i class="fas fa-save"></i> Şifrəni Saxla
+                        </button>
+                    </div>
+                    <div class="panel-card">
+                        <h3><i class="fas fa-trash-alt"></i> Məlumatları Sıfırla</h3>
+                        <p style="color:var(--admin-muted);font-size:0.9rem;margin-bottom:16px;">
+                            Bütün admin dəyişikliklərini silib standart məlumatlara qayıt.
+                        </p>
+                        <button class="btn-danger" id="resetDataBtn">
+                            <i class="fas fa-undo"></i> Sıfırla
+                        </button>
+                    </div>
+                </section>
+
+            </div><!-- /admin-content -->
+        </main><!-- /admin-main -->
+    </div><!-- /admin-wrapper -->
+
+    <!-- ========== TOAST ========== -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMsg"></span>
+    </div>
+
+    <!-- ========== TEAM MODAL ========== -->
+    <div class="modal-overlay" id="teamModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="teamModalTitle">Üzv Əlavə Et</h3>
+                <button class="modal-close" onclick="closeModal('teamModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="teamEditIndex" value="-1">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Ad Soyad</label>
+                        <input type="text" id="teamName" maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Rol</label>
+                        <input type="text" id="teamRole" maxlength="100">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Bio (AZ)</label>
+                        <textarea id="teamBioAz" rows="2" maxlength="300"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Bio (EN)</label>
+                        <textarea id="teamBioEn" rows="2" maxlength="300"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub URL</label>
+                        <input type="text" id="teamGithub" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label>LinkedIn URL</label>
+                        <input type="text" id="teamLinkedin" maxlength="200">
+                    </div>
+                </div>
+                <div class="skills-edit" style="margin-top:16px;">
+                    <label style="font-size:0.8rem;color:var(--admin-muted);margin-bottom:8px;display:block;font-weight:500;">Bacarıqlar</label>
+                    <div class="skill-row">
+                        <input type="text" id="skill1Name" placeholder="Bacarıq adı" maxlength="50">
+                        <input type="number" id="skill1Val" placeholder="%" min="0" max="100">
+                        <span>%</span>
+                    </div>
+                    <div class="skill-row">
+                        <input type="text" id="skill2Name" placeholder="Bacarıq adı" maxlength="50">
+                        <input type="number" id="skill2Val" placeholder="%" min="0" max="100">
+                        <span>%</span>
+                    </div>
+                    <div class="skill-row">
+                        <input type="text" id="skill3Name" placeholder="Bacarıq adı" maxlength="50">
+                        <input type="number" id="skill3Val" placeholder="%" min="0" max="100">
+                        <span>%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('teamModal')">Ləğv et</button>
+                <button class="btn-primary" id="saveTeamBtn">Saxla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== PROJECT MODAL ========== -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="projectModalTitle">Layihə Əlavə Et</h3>
+                <button class="modal-close" onclick="closeModal('projectModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="projectEditIndex" value="-1">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Layihə Adı</label>
+                        <input type="text" id="projectName" maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label>Kateqoriya</label>
+                        <select id="projectCategory">
+                            <option value="ai">AI / ML</option>
+                            <option value="web">Web</option>
+                            <option value="mobile">Mobile</option>
+                            <option value="iot">IoT</option>
+                            <option value="security">Security</option>
+                            <option value="other">Digər</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Təsvir (AZ)</label>
+                        <textarea id="projectDescAz" rows="2" maxlength="300"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Təsvir (EN)</label>
+                        <textarea id="projectDescEn" rows="2" maxlength="300"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Etiketlər (vergüllə)</label>
+                        <input type="text" id="projectTags" placeholder="AI, Python, React" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label>İkon (Font Awesome)</label>
+                        <input type="text" id="projectIcon" placeholder="fas fa-code" maxlength="60">
+                    </div>
+                    <div class="form-group">
+                        <label>Demo URL</label>
+                        <input type="text" id="projectDemo" maxlength="200">
+                    </div>
+                    <div class="form-group">
+                        <label>GitHub URL</label>
+                        <input type="text" id="projectGithub" maxlength="200">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('projectModal')">Ləğv et</button>
+                <button class="btn-primary" id="saveProjectBtn">Saxla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== ACHIEVEMENT MODAL ========== -->
+    <div class="modal-overlay" id="achievementModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="achievementModalTitle">Uğur Əlavə Et</h3>
+                <button class="modal-close" onclick="closeModal('achievementModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="achievementEditIndex" value="-1">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Başlıq</label>
+                        <input type="text" id="achievementTitle" maxlength="150">
+                    </div>
+                    <div class="form-group">
+                        <label>İl</label>
+                        <input type="text" id="achievementYear" placeholder="2025" maxlength="10">
+                    </div>
+                    <div class="form-group">
+                        <label>Medal Növü</label>
+                        <select id="achievementBadge">
+                            <option value="gold">Qızıl</option>
+                            <option value="silver">Gümüş</option>
+                            <option value="bronze">Bürünc</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Medal Mətni</label>
+                        <input type="text" id="achievementBadgeText" placeholder="Qızıl Medal" maxlength="60">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Təsvir (AZ)</label>
+                        <textarea id="achievementDescAz" rows="2" maxlength="400"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Təsvir (EN)</label>
+                        <textarea id="achievementDescEn" rows="2" maxlength="400"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('achievementModal')">Ləğv et</button>
+                <button class="btn-primary" id="saveAchievementBtn">Saxla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== BLOG MODAL ========== -->
+    <div class="modal-overlay" id="blogModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="blogModalTitle">Bloq Yazısı Əlavə Et</h3>
+                <button class="modal-close" onclick="closeModal('blogModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="blogEditIndex" value="-1">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Başlıq (AZ)</label>
+                        <input type="text" id="blogTitleAz" maxlength="150">
+                    </div>
+                    <div class="form-group">
+                        <label>Başlıq (EN)</label>
+                        <input type="text" id="blogTitleEn" maxlength="150">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Mətn (AZ)</label>
+                        <textarea id="blogTextAz" rows="3" maxlength="1000"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Mətn (EN)</label>
+                        <textarea id="blogTextEn" rows="3" maxlength="1000"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Tarix (Gün)</label>
+                        <input type="text" id="blogDateDay" placeholder="15" maxlength="2">
+                    </div>
+                    <div class="form-group">
+                        <label>Tarix (Ay İl)</label>
+                        <input type="text" id="blogDateMonth" placeholder="Mar 2025" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label>Etiketlər</label>
+                        <input type="text" id="blogTags" placeholder="Hackathon, AI" maxlength="100">
+                    </div>
+                    <div class="form-group">
+                        <label>İkon (Font Awesome)</label>
+                        <input type="text" id="blogIcon" placeholder="fas fa-newspaper" maxlength="60">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('blogModal')">Ləğv et</button>
+                <button class="btn-primary" id="saveBlogBtn">Saxla</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FAQ MODAL ========== -->
+    <div class="modal-overlay" id="faqModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="faqModalTitle">Sual Əlavə Et</h3>
+                <button class="modal-close" onclick="closeModal('faqModal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="faqEditIndex" value="-1">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Sual (AZ)</label>
+                        <input type="text" id="faqQuestionAz" maxlength="200">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Sual (EN)</label>
+                        <input type="text" id="faqQuestionEn" maxlength="200">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Cavab (AZ)</label>
+                        <textarea id="faqAnswerAz" rows="3" maxlength="600"></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Cavab (EN)</label>
+                        <textarea id="faqAnswerEn" rows="3" maxlength="600"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('faqModal')">Ləğv et</button>
+                <button class="btn-primary" id="saveFaqBtn">Saxla</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
