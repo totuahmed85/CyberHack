@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="az" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>CyberHack | Secure The Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== PRELOADER ========== -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">
+                <img src="logo.png" alt="CyberHack Logo" class="logo-img preloader-logo-img">
+            </div>
+            <div class="preloader-bar">
+                <div class="preloader-progress" id="preloaderProgress"></div>
+            </div>
+            <div class="preloader-percent" id="preloaderPercent">0%</div>
+            <div class="preloader-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== CURSOR TRAIL ========== -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+    <canvas class="cursor-trail-canvas" id="cursorTrail"></canvas>
+
+    <!-- ========== PARTICLES ========== -->
+    <div class="particles" id="particles"></div>
+
+    <!-- ========== FLOATING ORBS ========== -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="logo.png" alt="CyberHack" class="logo-img nav-logo-img">
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" data-az="Ana Səhifə" data-en="Home">Ana Səhifə</a></li>
+                <li><a href="#about" data-az="Haqqımızda" data-en="About">Haqqımızda</a></li>
+                <li><a href="#projects" data-az="Layihələr" data-en="Projects">Layihələr</a></li>
+                <li><a href="#team" data-az="Komanda" data-en="Team">Komanda</a></li>
+                <li><a href="#achievements" data-az="Uğurlar" data-en="Achievements">Uğurlar</a></li>
+                <li><a href="#blog" data-az="Bloq" data-en="Blog">Bloq</a></li>
+                <li><a href="#contact" data-az="Əlaqə" data-en="Contact">Əlaqə</a></li>
+            </ul>
+            <div class="nav-actions">
+                <!-- Language Switch -->
+                <button class="lang-toggle" id="langToggle" title="Dil dəyişdir">
+                    <span class="lang-active">AZ</span>
+                    <span class="lang-divider">/</span>
+                    <span class="lang-inactive">EN</span>
+                </button>
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" title="Tema dəyiş">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <!-- Mobile Toggle -->
+                <button class="nav-toggle" id="navToggle">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="grid-lines"></div>
+            <div class="parallax-layer" data-speed="0.3">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                <span data-az="CyberHack — Secure The Future" data-en="CyberHack — Secure The Future">CyberHack — Secure The Future</span>
+            </div>
+            <h1 class="hero-title glitch-wrapper">
+                <span class="line" data-az="Gələcəyi" data-en="Secure">Gələcəyi</span>
+                <span class="line gradient-text glitch-text" data-az="Təhlükəsiz Edirik" data-en="The Future" data-text="Təhlükəsiz Edirik">Təhlükəsiz Edirik</span>
+            </h1>
+            <p class="hero-subtitle" data-az="Kibertəhlükəsizlik və texnologiya sahəsində innovativ həllər yaradan, hakatonlarda rəqabət aparan CyberHack komandasıyıq." data-en="We are CyberHack — a team creating innovative cybersecurity and technology solutions, competing in hackathons.">
+                Kibertəhlükəsizlik və texnologiya sahəsində innovativ həllər yaradan, hakatonlarda rəqabət aparan CyberHack komandasıyıq.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <span data-az="Layihələrimiz" data-en="Our Projects">Layihələrimiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span data-az="Bizimlə Əlaqə" data-en="Contact Us">Bizimlə Əlaqə</span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10">0</span>+
+                    <span class="stat-label" data-az="Hackathon" data-en="Hackathons">Hackathon</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5">0</span>+
+                    <span class="stat-label" data-az="Mükafat" data-en="Awards">Mükafat</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="15">0</span>+
+                    <span class="stat-label" data-az="Layihə" data-en="Projects">Layihə</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"><div class="wheel"></div></div>
+            <span data-az="Aşağı Scroll Et" data-en="Scroll Down">Aşağı Scroll Et</span>
+        </div>
+    </section>
+
+    <!-- ========== COUNTDOWN TIMER ========== -->
+    <section class="section countdown-section" id="countdown">
+        <div class="container">
+            <div class="countdown-wrapper">
+                <div class="countdown-info">
+                    <span class="section-tag">&lt;növbəti hackathon&gt;</span>
+                    <h2 class="countdown-title" data-az="Növbəti Hackathona" data-en="Next Hackathon">Növbəti Hackathona</h2>
+                    <p class="countdown-event" data-az="TechFest 2026 — Bakı" data-en="TechFest 2026 — Baku">TechFest 2026 — Bakı</p>
+                </div>
+                <div class="countdown-timer" id="countdownTimer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-days">00</span>
+                        <span class="countdown-label" data-az="Gün" data-en="Days">Gün</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-hours">00</span>
+                        <span class="countdown-label" data-az="Saat" data-en="Hours">Saat</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-minutes">00</span>
+                        <span class="countdown-label" data-az="Dəqiqə" data-en="Minutes">Dəqiqə</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-seconds">00</span>
+                        <span class="countdown-label" data-az="Saniyə" data-en="Seconds">Saniyə</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;haqqımızda&gt;</span>
+                <h2 class="section-title" data-az="Biz Kimik?" data-en="Who Are We?">Biz Kimik?</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal-left">
+                    <p class="about-description" data-az="Biz CyberHack — kibertəhlükəsizlik və texnologiyaya həvəsli, yaradıcı və nəticəyönümlü bir komandayıq. Müxtəlif hakatonlarda iştirak edərək innovativ həllər yaradırıq." data-en="We are CyberHack — a passionate, creative, and results-oriented cybersecurity team. We create innovative solutions by participating in various hackathons.">
+                        Biz CyberHack — kibertəhlükəsizlik və texnologiyaya həvəsli, yaradıcı və nəticəyönümlü bir komandayıq. 
+                        Müxtəlif hakatonlarda iştirak edərək innovativ həllər yaradırıq.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-code"></i></div>
+                            <div>
+                                <h4 data-az="Full-Stack Development" data-en="Full-Stack Development">Full-Stack Development</h4>
+                                <p data-az="Frontend-dən backend-ə qədər tam həllər yaradırıq" data-en="We create complete solutions from frontend to backend">Frontend-dən backend-ə qədər tam həllər yaradırıq</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div>
+                                <h4 data-az="İnnovativ Düşüncə" data-en="Innovative Thinking">İnnovativ Düşüncə</h4>
+                                <p data-az="Problemlərə yaradıcı yanaşma ilə həll tapırıq" data-en="We find solutions with creative approaches">Problemlərə yaradıcı yanaşma ilə həll tapırıq</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                            <div>
+                                <h4 data-az="Sürətli İcra" data-en="Fast Execution">Sürətli İcra</h4>
+                                <p data-az="Qısa vaxtda keyfiyyətli nəticələr əldə edirik" data-en="We achieve quality results in a short time">Qısa vaxtda keyfiyyətli nəticələr əldə edirik</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual reveal-right">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="code-title">cyberhack.js</span>
+                        </div>
+                        <div class="code-body">
+                            <pre><code><span class="code-keyword">const</span> <span class="code-var">cyberHack</span> = {
+  <span class="code-prop">ad</span>: <span class="code-string">"CyberHack"</span>,
+  <span class="code-prop">missiya</span>: <span class="code-string">"Secure The Future"</span>,
+  <span class="code-prop">bacarıqlar</span>: [
+    <span class="code-string">"Web Development"</span>,
+    <span class="code-string">"Mobile Apps"</span>,
+    <span class="code-string">"AI / ML"</span>,
+    <span class="code-string">"UI/UX Design"</span>
+  ],
+  <span class="code-func">hackathonQazan</span>() {
+    <span class="code-keyword">return</span> <span class="code-string">"🏆 Uğur!"</span>;
+  }
+};</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GITHUB STATS ========== -->
+    <section class="section github-stats" id="github">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;github&gt;</span>
+                <h2 class="section-title" data-az="GitHub Aktivlik" data-en="GitHub Activity">GitHub Aktivlik</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="github-grid">
+                <div class="github-card reveal-up">
+                    <div class="github-icon"><i class="fas fa-code-commit"></i></div>
+                    <span class="github-number" data-target="1240">0</span>
+                    <span class="github-label" data-az="Commit" data-en="Commits">Commit</span>
+                </div>
+                <div class="github-card reveal-up">
+                    <div class="github-icon"><i class="fas fa-code-branch"></i></div>
+                    <span class="github-number" data-target="85">0</span>
+                    <span class="github-label" data-az="Repository" data-en="Repositories">Repository</span>
+                </div>
+                <div class="github-card reveal-up">
+                    <div class="github-icon"><i class="fas fa-code-pull-request"></i></div>
+                    <span class="github-number" data-target="320">0</span>
+                    <span class="github-label" data-az="Pull Request" data-en="Pull Requests">Pull Request</span>
+                </div>
+                <div class="github-card reveal-up">
+                    <div class="github-icon"><i class="fas fa-star"></i></div>
+                    <span class="github-number" data-target="450">0</span>
+                    <span class="github-label" data-az="Ulduz" data-en="Stars">Ulduz</span>
+                </div>
+            </div>
+            <!-- Contribution Graph -->
+            <div class="github-contrib reveal-up">
+                <h3 data-az="Son 6 ay aktivlik" data-en="Last 6 months activity">Son 6 ay aktivlik</h3>
+                <div class="contrib-graph" id="contribGraph"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;layihələr&gt;</span>
+                <h2 class="section-title" data-az="Gördüyümüz İşlər" data-en="Our Work">Gördüyümüz İşlər</h2>
+                <div class="section-line"></div>
+            </div>
+            <!-- Project Filter -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all" data-az="Hamısı" data-en="All">Hamısı</button>
+                <button class="filter-btn" data-filter="ai" data-az="AI / ML" data-en="AI / ML">AI / ML</button>
+                <button class="filter-btn" data-filter="web" data-az="Web" data-en="Web">Web</button>
+                <button class="filter-btn" data-filter="mobile" data-az="Mobil" data-en="Mobile">Mobil</button>
+                <button class="filter-btn" data-filter="iot" data-az="IoT" data-en="IoT">IoT</button>
+            </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-brain"></i></div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>AI</span><span>Python</span><span>React</span></div>
+                        <h3>AI Köməkçi Platforma</h3>
+                        <p data-az="Süni intellekt əsaslı müştəri xidməti platforması." data-en="AI-based customer service platform.">Süni intellekt əsaslı müştəri xidməti platforması.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card" data-category="mobile">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>Mobile</span><span>Flutter</span><span>Firebase</span></div>
+                        <h3>Sağlamlıq Tətbiqi</h3>
+                        <p data-az="Sağlamlıq göstəricilərini izləyən mobil tətbiq." data-en="Mobile app that tracks health metrics.">Sağlamlıq göstəricilərini izləyən mobil tətbiq.</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card" data-category="iot">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-leaf"></i></div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>IoT</span><span>Node.js</span><span>Hardware</span></div>
+                        <h3>Ağıllı Əkinçilik</h3>
+                        <p data-az="IoT sensorlarla ağıllı kənd təsərrüfatı sistemi." data-en="Smart agriculture system with IoT sensors.">IoT sensorlarla ağıllı kənd təsərrüfatı sistemi.</p>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>EdTech</span><span>React</span><span>MongoDB</span></div>
+                        <h3>Təhsil Platforması</h3>
+                        <p data-az="Onlayn interaktiv öyrənmə platforması." data-en="Online interactive learning platform.">Onlayn interaktiv öyrənmə platforması.</p>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-eye"></i></div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>AI</span><span>OpenCV</span><span>TensorFlow</span></div>
+                        <h3>Görüntü Tanıma</h3>
+                        <p data-az="CV ilə real-time obyekt tanıma sistemi." data-en="Real-time object recognition with CV.">CV ilə real-time obyekt tanıma sistemi.</p>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <div class="project-placeholder"><i class="fas fa-chart-line"></i></div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags"><span>Web</span><span>D3.js</span><span>Node.js</span></div>
+                        <h3>Data Dashboard</h3>
+                        <p data-az="Real-time analitika dashboard sistemi." data-en="Real-time analytics dashboard system.">Real-time analitika dashboard sistemi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TEAM SECTION ========== -->
+    <section class="section team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;cyberhack&gt;</span>
+                <h2 class="section-title" data-az="CyberHack Komandası" data-en="CyberHack Team">CyberHack Komandası</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="team-card reveal-up">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder"><i class="fas fa-user"></i></div>
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <h3>Ad Soyad</h3>
+                    <span class="team-role">Team Lead / Full-Stack</span>
+                    <p class="team-bio" data-az="CyberHack-in lideri. 3+ il təcrübə." data-en="CyberHack leader. 3+ years experience.">CyberHack-in lideri. 3+ il təcrübə.</p>
+                    <div class="team-skills-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>React</span><span>90%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Node.js</span><span>85%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Python</span><span>80%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+                        </div>
+                    </div>
+                    <div class="team-socials">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <!-- Member 2 -->
+                <div class="team-card reveal-up">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder"><i class="fas fa-user"></i></div>
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <h3>Ad Soyad</h3>
+                    <span class="team-role">Frontend Developer</span>
+                    <p class="team-bio" data-az="UI/UX və frontend mütəxəssisi." data-en="UI/UX and frontend specialist.">UI/UX və frontend mütəxəssisi.</p>
+                    <div class="team-skills-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Vue.js</span><span>92%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>CSS/SASS</span><span>95%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Figma</span><span>88%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+                        </div>
+                    </div>
+                    <div class="team-socials">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <!-- Member 3 -->
+                <div class="team-card reveal-up">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder"><i class="fas fa-user"></i></div>
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <h3>Ad Soyad</h3>
+                    <span class="team-role">Backend Developer</span>
+                    <p class="team-bio" data-az="Server və DB arxitekturasında təcrübəli." data-en="Experienced in server & DB architecture.">Server və DB arxitekturasında təcrübəli.</p>
+                    <div class="team-skills-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Java</span><span>88%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>PostgreSQL</span><span>85%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Docker</span><span>78%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div>
+                        </div>
+                    </div>
+                    <div class="team-socials">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <!-- Member 4 -->
+                <div class="team-card reveal-up">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder"><i class="fas fa-user"></i></div>
+                        <div class="avatar-ring"></div>
+                    </div>
+                    <h3>Ad Soyad</h3>
+                    <span class="team-role">AI / ML Engineer</span>
+                    <p class="team-bio" data-az="Maşın öyrənməsi mütəxəssisi." data-en="Machine learning specialist.">Maşın öyrənməsi mütəxəssisi.</p>
+                    <div class="team-skills-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>TensorFlow</span><span>90%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Python</span><span>95%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>OpenCV</span><span>82%</span></div>
+                            <div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div>
+                        </div>
+                    </div>
+                    <div class="team-socials">
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ACHIEVEMENTS SECTION ========== -->
+    <section class="section achievements" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;uğurlar&gt;</span>
+                <h2 class="section-title" data-az="Uğurlarımız" data-en="Our Achievements">Uğurlarımız</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-trophy"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h3>1-ci Yer — TechFest Hackathon</h3>
+                        <p data-az="AI əsaslı həllimizlə 50+ komanda arasından CyberHack birinci yeri qazandı." data-en="CyberHack won first place among 50+ teams with our AI-based solution.">AI əsaslı həllimizlə 50+ komanda arasından CyberHack birinci yeri qazandı.</p>
+                        <div class="timeline-badge gold"><i class="fas fa-medal"></i> Qızıl Medal</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-award"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h3>Ən Yaxşı Dizayn — StartUp Weekend</h3>
+                        <p data-az="İstifadəçi təcrübəsi baxımından ən yaxşı layihə seçildik." data-en="Selected as the best project in terms of user experience.">İstifadəçi təcrübəsi baxımından ən yaxşı layihə seçildik.</p>
+                        <div class="timeline-badge silver"><i class="fas fa-palette"></i> Dizayn Mükafatı</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-star"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3>2-ci Yer — Code Sprint</h3>
+                        <p data-az="72 saatlıq hackathonda ikinci yeri əldə etdik." data-en="We achieved second place in the 72-hour hackathon.">72 saatlıq hackathonda ikinci yeri əldə etdik.</p>
+                        <div class="timeline-badge silver"><i class="fas fa-medal"></i> Gümüş Medal</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"><i class="fas fa-certificate"></i></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3>Xüsusi Mükafat — İnnovasiya Həftəsi</h3>
+                        <p data-az="IoT layihəmiz xüsusi mükafata layiq görüldü." data-en="Our IoT project was awarded a special prize.">IoT layihəmiz xüsusi mükafata layiq görüldü.</p>
+                        <div class="timeline-badge bronze"><i class="fas fa-gem"></i> Xüsusi Mükafat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HACKATHON MAP ========== -->
+    <section class="section hackathon-map" id="map">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;xəritə&gt;</span>
+                <h2 class="section-title" data-az="Hackathon Xəritəsi" data-en="Hackathon Map">Hackathon Xəritəsi</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="map-container reveal-up">
+                <div class="map-visual">
+                    <!-- Simplified SVG-style map -->
+                    <div class="map-grid">
+                        <div class="map-pin" style="top: 30%; left: 45%;" data-city="Bakı" data-event="TechFest 2025" data-result="🥇 1-ci Yer">
+                            <div class="pin-pulse"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="pin-tooltip">
+                                <strong>Bakı</strong>
+                                <span>TechFest 2025</span>
+                                <span class="pin-result">🥇 1-ci Yer</span>
+                            </div>
+                        </div>
+                        <div class="map-pin" style="top: 25%; left: 35%;" data-city="Gəncə" data-event="Code Sprint 2024" data-result="🥈 2-ci Yer">
+                            <div class="pin-pulse"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="pin-tooltip">
+                                <strong>Gəncə</strong>
+                                <span>Code Sprint 2024</span>
+                                <span class="pin-result">🥈 2-ci Yer</span>
+                            </div>
+                        </div>
+                        <div class="map-pin" style="top: 40%; left: 55%;" data-city="Sumqayıt" data-event="StartUp Weekend" data-result="🎨 Dizayn Mükafatı">
+                            <div class="pin-pulse"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="pin-tooltip">
+                                <strong>Sumqayıt</strong>
+                                <span>StartUp Weekend</span>
+                                <span class="pin-result">🎨 Dizayn Mükafatı</span>
+                            </div>
+                        </div>
+                        <div class="map-pin" style="top: 50%; left: 25%;" data-city="Lənkəran" data-event="İnnovasiya Həftəsi" data-result="💎 Xüsusi Mükafat">
+                            <div class="pin-pulse"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="pin-tooltip">
+                                <strong>Lənkəran</strong>
+                                <span>İnnovasiya Həftəsi</span>
+                                <span class="pin-result">💎 Xüsusi Mükafat</span>
+                            </div>
+                        </div>
+                        <div class="map-pin" style="top: 20%; left: 60%;" data-city="Şəki" data-event="Hack4Good 2024" data-result="🏅 Finalist">
+                            <div class="pin-pulse"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="pin-tooltip">
+                                <strong>Şəki</strong>
+                                <span>Hack4Good 2024</span>
+                                <span class="pin-result">🏅 Finalist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY SECTION ========== -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;qalereya&gt;</span>
+                <h2 class="section-title" data-az="Media / Qalereya" data-en="Media / Gallery">Media / Qalereya</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item large reveal-up" data-caption="TechFest 2025 — CyberHack">
+                    <div class="gallery-placeholder"><i class="fas fa-image"></i><span>Hackathon Foto 1</span></div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                        <span>TechFest 2025</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal-up" data-caption="Kodlaşdırma anı">
+                    <div class="gallery-placeholder"><i class="fas fa-image"></i><span>Kodlaşdırma</span></div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                        <span data-az="Kodlaşdırma anı" data-en="Coding moment">Kodlaşdırma anı</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal-up" data-caption="Mükafat mərasimi">
+                    <div class="gallery-placeholder"><i class="fas fa-image"></i><span>Mükafat</span></div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                        <span data-az="Mükafat mərasimi" data-en="Award ceremony">Mükafat mərasimi</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal-up" data-caption="Prezentasiya">
+                    <div class="gallery-placeholder"><i class="fas fa-image"></i><span>Prezentasiya</span></div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                        <span>Prezentasiya</span>
+                    </div>
+                </div>
+                <div class="gallery-item large reveal-up" data-caption="CyberHack Foto">
+                    <div class="gallery-placeholder"><i class="fas fa-image"></i><span>CyberHack Foto</span></div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-expand"></i>
+                        <span data-az="CyberHack Foto" data-en="CyberHack Photo">CyberHack Foto</span>
+                    </div>
+                </div>
+                <div class="gallery-item video reveal-up" data-caption="Hackathon Video">
+                    <div class="gallery-placeholder"><i class="fas fa-play-circle"></i><span>Video</span></div>
+                    <div class="gallery-overlay">
+                        <i class="fas fa-play"></i>
+                        <span>Hackathon Video</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;rəylər&gt;</span>
+                <h2 class="section-title" data-az="Rəylər" data-en="Testimonials">Rəylər</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="testimonials-slider" id="testimonialsSlider">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p data-az="Bu komanda texniki bacarıqları və yaradıcılıqları ilə məni heyran etdi. Hackathonda göstərdikləri performans əla idi." data-en="This team amazed me with their technical skills and creativity. Their performance at the hackathon was excellent.">Bu komanda texniki bacarıqları və yaradıcılıqları ilə məni heyran etdi. Hackathonda göstərdikləri performans əla idi.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+                            <div>
+                                <strong>Əli Həsənov</strong>
+                                <span data-az="Münsif — TechFest" data-en="Judge — TechFest">Münsif — TechFest</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p data-az="Məntorluq etdiyim ən yaxşı komandalardan biri. Sürətli öyrənmə qabiliyyətləri və komanda işi mükəmməl idi." data-en="One of the best teams I've mentored. Their fast learning ability and teamwork were excellent.">Məntorluq etdiyim ən yaxşı komandalardan biri. Sürətli öyrənmə qabiliyyətləri və komanda işi mükəmməl idi.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+                            <div>
+                                <strong>Leyla Əliyeva</strong>
+                                <span data-az="Mentor — StartUp Weekend" data-en="Mentor — StartUp Weekend">Mentor — StartUp Weekend</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote"><i class="fas fa-quote-left"></i></div>
+                        <p data-az="Layihələri həm texniki cəhətdən güclü, həm də istifadəçi dostu idi. Onları yenidən hackathonlarda görmək istəyirəm." data-en="Their projects were both technically strong and user-friendly. I'd love to see them again at hackathons.">Layihələri həm texniki cəhətdən güclü, həm də istifadəçi dostu idi. Onları yenidən hackathonlarda görmək istəyirəm.</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar"><i class="fas fa-user-tie"></i></div>
+                            <div>
+                                <strong>Rəşad Məmmədov</strong>
+                                <span data-az="CTO — TechCompany" data-en="CTO — TechCompany">CTO — TechCompany</span>
+                            </div>
+                        </div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prevTestimonial"><i class="fas fa-chevron-left"></i></button>
+                    <div class="slider-dots" id="sliderDots"></div>
+                    <button class="slider-btn" id="nextTestimonial"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BLOG SECTION ========== -->
+    <section class="section blog" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;bloq&gt;</span>
+                <h2 class="section-title" data-az="Hackathon Günlüyü" data-en="Hackathon Diary">Hackathon Günlüyü</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card reveal-up">
+                    <div class="blog-image">
+                        <div class="blog-placeholder"><i class="fas fa-trophy"></i></div>
+                        <div class="blog-date"><span>15</span>Mar 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-tags"><span>Hackathon</span><span>AI</span></div>
+                        <h3 data-az="TechFest 2025-də necə qalib gəldik" data-en="How we won at TechFest 2025">TechFest 2025-də necə qalib gəldik</h3>
+                        <p data-az="48 saat ərzində AI əsaslı həll yaratdıq və 50+ komanda arasından birinci olduq..." data-en="We created an AI-based solution in 48 hours and came first among 50+ teams...">48 saat ərzində AI əsaslı həll yaratdıq və 50+ komanda arasından birinci olduq...</p>
+                        <a href="#" class="blog-read-more" data-az="Davamını Oxu" data-en="Read More">Davamını Oxu <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="blog-card reveal-up">
+                    <div class="blog-image">
+                        <div class="blog-placeholder"><i class="fas fa-laptop-code"></i></div>
+                        <div class="blog-date"><span>28</span>Feb 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-tags"><span>Tutorial</span><span>React</span></div>
+                        <h3 data-az="Hackathon hazırlığı: 5 vacib məsləhət" data-en="Hackathon preparation: 5 important tips">Hackathon hazırlığı: 5 vacib məsləhət</h3>
+                        <p data-az="Hackathona gedməzdən əvvəl nələrə diqqət etməli? Təcrübəmizi bölüşürük..." data-en="What to pay attention to before going to a hackathon? We share our experience...">Hackathona gedməzdən əvvəl nələrə diqqət etməli? Təcrübəmizi bölüşürük...</p>
+                        <a href="#" class="blog-read-more" data-az="Davamını Oxu" data-en="Read More">Davamını Oxu <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="blog-card reveal-up">
+                    <div class="blog-image">
+                        <div class="blog-placeholder"><i class="fas fa-users"></i></div>
+                        <div class="blog-date"><span>10</span>Jan 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-tags"><span>CyberHack</span><span>Story</span></div>
+                        <h3 data-az="CyberHack-in yaranma hekayəsi" data-en="The story of how CyberHack was formed">CyberHack-in yaranma hekayəsi</h3>
+                        <p data-az="Bir universitetdə tanış olduq və ilk hackathonumuza birlikdə getdik..." data-en="We met at university and went to our first hackathon together...">Bir universitetdə tanış olduq və ilk hackathonumuza birlikdə getdik...</p>
+                        <a href="#" class="blog-read-more" data-az="Davamını Oxu" data-en="Read More">Davamını Oxu <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;FAQ&gt;</span>
+                <h2 class="section-title" data-az="Tez-tez Verilən Suallar" data-en="Frequently Asked Questions">Tez-tez Verilən Suallar</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal-up">
+                    <button class="faq-question">
+                        <span data-az="Komandanıza necə qoşula bilərəm?" data-en="How can I join your team?">Komandanıza necə qoşula bilərəm?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-az="Bizimlə əlaqə bölməsindən yazın. Texniki bacarıqlarınız və hackathon təcrübəniz haqqında məlumat verin." data-en="Write to us from the contact section. Provide information about your technical skills and hackathon experience.">Bizimlə əlaqə bölməsindən yazın. Texniki bacarıqlarınız və hackathon təcrübəniz haqqında məlumat verin.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-up">
+                    <button class="faq-question">
+                        <span data-az="Hansı hackathonlarda iştirak edirsiniz?" data-en="Which hackathons do you participate in?">Hansı hackathonlarda iştirak edirsiniz?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-az="Azərbaycandakı əksər hackathonlarda, həmçinin beynəlxalq onlayn hackathonlarda iştirak edirik." data-en="We participate in most hackathons in Azerbaijan, as well as international online hackathons.">Azərbaycandakı əksər hackathonlarda, həmçinin beynəlxalq onlayn hackathonlarda iştirak edirik.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-up">
+                    <button class="faq-question">
+                        <span data-az="Hansı texnologiyalardan istifadə edirsiniz?" data-en="What technologies do you use?">Hansı texnologiyalardan istifadə edirsiniz?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-az="React, Node.js, Python, Flutter, TensorFlow, Docker və daha çox texnologiya ilə işləyirik." data-en="We work with React, Node.js, Python, Flutter, TensorFlow, Docker and many more technologies.">React, Node.js, Python, Flutter, TensorFlow, Docker və daha çox texnologiya ilə işləyirik.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-up">
+                    <button class="faq-question">
+                        <span data-az="Komanda neçə nəfərdən ibarətdir?" data-en="How many people are on the team?">Komanda neçə nəfərdən ibarətdir?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-az="Əsas komandamız 4 nəfərdən ibarətdir, lakin bəzi hackathonlarda 5-6 nəfərlik genişlənmiş komanda ilə iştirak edirik." data-en="Our core team consists of 4 people, but in some hackathons we participate with an expanded team of 5-6 people.">Əsas komandamız 4 nəfərdən ibarətdir, lakin bəzi hackathonlarda 5-6 nəfərlik genişlənmiş komanda ilə iştirak edirik.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal-up">
+                    <button class="faq-question">
+                        <span data-az="Sponsorluq təklif edə bilərəm?" data-en="Can I offer sponsorship?">Sponsorluq təklif edə bilərəm?</span>
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p data-az="Əlbəttə! Sponsorluq və əməkdaşlıq təklifləri üçün bizə email vasitəsilə müraciət edin." data-en="Of course! Contact us by email for sponsorship and partnership proposals.">Əlbəttə! Sponsorluq və əməkdaşlıq təklifləri üçün bizə email vasitəsilə müraciət edin.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TECH STACK MARQUEE ========== -->
+    <section class="section tech-stack">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;texnologiyalar&gt;</span>
+                <h2 class="section-title" data-az="Texnologiya Yığınımız" data-en="Our Tech Stack">Texnologiya Yığınımız</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="tech-marquee">
+                <div class="tech-track">
+                    <div class="tech-item"><i class="fab fa-react"></i><span>React</span></div>
+                    <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+                    <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
+                    <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                    <div class="tech-item"><i class="fab fa-figma"></i><span>Figma</span></div>
+                    <div class="tech-item"><i class="fab fa-docker"></i><span>Docker</span></div>
+                    <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                    <div class="tech-item"><i class="fab fa-vuejs"></i><span>Vue.js</span></div>
+                    <div class="tech-item"><i class="fas fa-database"></i><span>MongoDB</span></div>
+                    <div class="tech-item"><i class="fab fa-aws"></i><span>AWS</span></div>
+                    <div class="tech-item"><i class="fab fa-react"></i><span>React</span></div>
+                    <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+                    <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
+                    <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                    <div class="tech-item"><i class="fab fa-figma"></i><span>Figma</span></div>
+                    <div class="tech-item"><i class="fab fa-docker"></i><span>Docker</span></div>
+                    <div class="tech-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                    <div class="tech-item"><i class="fab fa-vuejs"></i><span>Vue.js</span></div>
+                    <div class="tech-item"><i class="fas fa-database"></i><span>MongoDB</span></div>
+                    <div class="tech-item"><i class="fab fa-aws"></i><span>AWS</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SPONSORS SECTION ========== -->
+    <section class="section sponsors" id="sponsors">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;partnyorlar&gt;</span>
+                <h2 class="section-title" data-az="Partnyorlar & Sponsorlar" data-en="Partners & Sponsors">Partnyorlar & Sponsorlar</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="sponsors-grid">
+                <div class="sponsor-item reveal-up"><div class="sponsor-placeholder"><i class="fas fa-building"></i><span>Sponsor 1</span></div></div>
+                <div class="sponsor-item reveal-up"><div class="sponsor-placeholder"><i class="fas fa-building"></i><span>Sponsor 2</span></div></div>
+                <div class="sponsor-item reveal-up"><div class="sponsor-placeholder"><i class="fas fa-building"></i><span>Sponsor 3</span></div></div>
+                <div class="sponsor-item reveal-up"><div class="sponsor-placeholder"><i class="fas fa-building"></i><span>Sponsor 4</span></div></div>
+                <div class="sponsor-item reveal-up"><div class="sponsor-placeholder"><i class="fas fa-building"></i><span>Sponsor 5</span></div></div>
+                <div class="sponsor-item reveal-up"><div class="sponsor-placeholder"><i class="fas fa-building"></i><span>Sponsor 6</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;əlaqə&gt;</span>
+                <h2 class="section-title" data-az="Bizimlə Əlaqə" data-en="Contact Us">Bizimlə Əlaqə</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <h3 data-az="Gəlin birlikdə işləyək!" data-en="Let's work together!">Gəlin birlikdə işləyək!</h3>
+                    <p data-az="Hackathon təklifləri, əməkdaşlıq və ya suallarınız üçün bizimlə əlaqə saxlayın." data-en="Contact us for hackathon proposals, collaboration, or questions.">Hackathon təklifləri, əməkdaşlıq və ya suallarınız üçün bizimlə əlaqə saxlayın.</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div><span>Email</span><a href="mailto:cyberhack@email.com">cyberhack@email.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-github"></i></div>
+                            <div><span>GitHub</span><a href="#" target="_blank" rel="noopener noreferrer">github.com/cyberhack</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                            <div><span>LinkedIn</span><a href="#" target="_blank" rel="noopener noreferrer">linkedin.com/company/cyberhack</a></div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form reveal-right" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Adınız" required maxlength="100" autocomplete="name">
+                        <label for="name" data-az="Adınız" data-en="Your Name">Adınız</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email" required maxlength="254" autocomplete="email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" placeholder="Mesajınız" rows="4" required maxlength="1000"></textarea>
+                        <label for="message" data-az="Mesajınız" data-en="Your Message">Mesajınız</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span data-az="Göndər" data-en="Send">Göndər</span> <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#hero" class="footer-logo">
+                    <img src="logo.png" alt="CyberHack" class="logo-img footer-logo-img">
+                </a>
+                <p>&copy; 2026 CyberHack. <span data-az="Bütün hüquqlar qorunur." data-en="All rights reserved.">Bütün hüquqlar qorunur.</span></p>
+                <div class="footer-socials">
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+        <div class="lightbox-content" id="lightboxContent"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
